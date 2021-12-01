@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private bool isPlayerRun;
     void Start()
     {
         
@@ -16,10 +16,19 @@ public class PlayerController : MonoBehaviour
     {
         
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)&& isPlayerRun==false)
+        {
             transform.DOMoveX(-6f, 12f);
-        if (Input.GetMouseButtonDown(1))
+            isPlayerRun = true;
+        }
+           
+       else if (Input.GetMouseButtonDown(0) && isPlayerRun==true)
+        {
             transform.DOPause();
+            isPlayerRun = false;
+        }
+            
 
+      
     }
 }
