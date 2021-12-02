@@ -9,10 +9,18 @@ public class CharStats : ScriptableObject
 	public float duration;
 	public float durationMin;
 	public float durationMax;
+	[HideInInspector]
+	public float runWait;
+	public float startRunWait;
+	public float endRunWait;
 
 
 	public void RandomizeStats()
 	{
 		duration = Random.Range(durationMin, durationMin);
+		runWait = Random.Range(startRunWait, endRunWait);
 	}
+
+
+	
 }

@@ -6,16 +6,10 @@ using DG.Tweening;
 public class PlayerController : MonoBehaviour
 {
     private bool isPlayerRun;
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         
-
         if (Input.GetMouseButtonDown(0)&& isPlayerRun==false)
         {
             transform.DOMoveX(-6f, 12f);
@@ -28,7 +22,6 @@ public class PlayerController : MonoBehaviour
             isPlayerRun = false;
         }
             
-
       
     }
 }

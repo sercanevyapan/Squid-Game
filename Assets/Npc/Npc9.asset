@@ -10,9 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be3997497870fcc4ca136779128457b4, type: 3}
-  m_Name: Npc
+  m_Name: Npc9
   m_EditorClassIdentifier: 
-  charName: 1
-  duration: 6
-  durationMin: 6
-  durationMax: 8
+  charName: 9
+  duration: 5
+  durationMin: 5
+  durationMax: 12
+  runWait: 1.4799992
+  startRunWait: 1
+  endRunWait: 4

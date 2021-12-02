@@ -8,10 +8,12 @@ public class NpcController : MonoBehaviour
 {
     public CharStats charStat;
 
+    
+
     void Start()
     {
         StartRun();
-      
+        
     }
 
     private void StartRun()
@@ -23,11 +25,15 @@ public class NpcController : MonoBehaviour
 
     IEnumerator StopRun()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(charStat.runWait);
         transform.DOPause();
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(charStat.runWait);
         StartRun();
     }
 
-   
+    public void KillTween()
+    {
+       transform.DOKill();
+    }
+
 }
