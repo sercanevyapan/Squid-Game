@@ -8,7 +8,7 @@ public class NpcController : MonoBehaviour
 {
     public CharStats charStat;
 
-    
+
 
     void Start()
     {
@@ -19,7 +19,7 @@ public class NpcController : MonoBehaviour
     private void StartRun()
     {
         charStat.RandomizeStats();
-        transform.DOMoveX(-6f, charStat.duration);
+        transform.DOMoveX(-10f, charStat.duration);
         StartCoroutine(StopRun());
     }
 

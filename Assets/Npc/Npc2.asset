@@ -15,7 +15,7 @@ MonoBehaviour:
   charName: 2
   duration: 5
   durationMin: 5
-  durationMax: 5
+  durationMax: 6
   runWait: 1
   startRunWait: 1
   endRunWait: 1

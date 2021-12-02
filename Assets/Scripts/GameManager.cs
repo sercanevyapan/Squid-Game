@@ -9,11 +9,31 @@ public class GameManager : MonoBehaviour
     float firstPosition;
     float lastPosition;
 
+    public GameObject greenRedLight;
+
+
     void Start()
     {    
       
-            StartGame();    
+            StartGame();
+            GreenRedLight();
     }
+
+    private void GreenRedLight()
+    {
+        StartCoroutine(StartGreenRedLight());
+    }
+
+    IEnumerator StartGreenRedLight()
+    {
+        greenRedLight.GetComponent<Renderer>().material.color = Color.green;
+        yield return new WaitForSeconds(1f);
+        greenRedLight.GetComponent<Renderer>().material.color = Color.red;
+        yield return new WaitForSeconds(1f);
+        greenRedLight.GetComponent<Renderer>().material.color = Color.green;
+        GreenRedLight();
+    }
+
     private void StartGame()
     {
         if (npcs.Count>0)
@@ -43,4 +63,6 @@ public class GameManager : MonoBehaviour
         StartGame();
     }
   
+
+
 }
