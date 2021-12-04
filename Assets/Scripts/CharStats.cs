@@ -5,21 +5,24 @@ using UnityEngine;
 public class CharStats : ScriptableObject
 {
     public string charName;
-	[HideInInspector]
+
 	public float duration;
-	public float durationMin;
-	public float durationMax;
-	[HideInInspector]
+	//public float durationMin;
+	//public float durationMax;
+
 	public float runWait;
-	public float startRunWait;
-	public float endRunWait;
+	//public float startRunWait;
+	//public float endRunWait;
+
+	public bool isDead;
 
 
-	public void RandomizeStats()
-	{
-		duration = Random.Range(durationMin, durationMin);
-		runWait = Random.Range(startRunWait, endRunWait);
-	}
+	//public void RandomizeStats()
+	//{
+	//	//duration = Random.Range(durationMin, durationMin);
+	//	//runWait = Random.Range(startRunWait, endRunWait);
+	//	isDead = false;
+	//}
 
 
 	

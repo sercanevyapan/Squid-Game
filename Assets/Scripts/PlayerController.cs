@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
         isStartGame = true;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if(isStartGame)
             PlayerInputControl();
@@ -36,19 +36,28 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && isPlayerRun == false)
         {
             transform.DOMoveX(0f, 15f);
-            isPlayerRun = true;
+            
             gameObject.GetComponent<Animator>().SetTrigger("Run");
+            isPlayerRun = true;
         }
 
         else if (Input.GetMouseButtonDown(0) && isPlayerRun == true)
         {
             transform.DOPause();
-            isPlayerRun = false;
+            
             gameObject.GetComponent<Animator>().SetTrigger("Idle");
+            isPlayerRun = false;
         }
     }
 
     public void KillTween()
+    {
+        isStartGame = false;
+        transform.DOKill();
+        gameObject.GetComponent<Animator>().SetTrigger("Dead");
+    }
+
+    public void RestartPlayer()
     {
         transform.DOKill();
     }

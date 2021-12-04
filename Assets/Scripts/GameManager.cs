@@ -12,12 +12,16 @@ public class GameManager : MonoBehaviour
     Vector3 lastPosition;
 
     public GameObject greenRedLight;
-    public GameObject player;
+    public PlayerController player;
+
+    public Gun gun;
+
 
     public float greenTime;
     public float redTime;
 
     public bool checkRedLight;
+
 
     void Start()
     {
@@ -27,12 +31,12 @@ public class GameManager : MonoBehaviour
     private void FixedUpdate()
     {
      
-       StartCoroutine( CheckMoveRedLight());
+       StartCoroutine( CheckMovePlayer());
         //StartCoroutine(CheckMoveChar());
      
     }
 
-    IEnumerator CheckMoveRedLight()
+    IEnumerator CheckMovePlayer()
     {
        
         if (player!=null && checkRedLight)
@@ -46,9 +50,12 @@ public class GameManager : MonoBehaviour
 
             if ((startPos.x - finalPos.x)>0.1f )
             {
-                GameObject destroyPlayer = player;
-                destroyPlayer.GetComponent<PlayerController>().KillTween();
-                player.SetActive(false);
+                
+
+                gun.Shoot(player.transform);
+                player.KillTween();
+
+                //player.SetActive(false);
             }
 
             
@@ -92,19 +99,26 @@ public class GameManager : MonoBehaviour
                     firstPosition = npcs[i].transform.position;
 
                     yield return new WaitForSeconds(0.5f);
-                    
-                    lastPosition = npcs[i].transform.position;
 
-                    Debug.Log(firstPosition.x - lastPosition.x);
+
+                        lastPosition = npcs[i].transform.position;
+
+                    //Debug.Log(firstPosition.x - lastPosition.x);
                     if ((firstPosition.x - lastPosition.x) > 0.15f &&npcs[i] != null)
                     {
                         if (npcs.Count > 0)
                         {
                             GameObject destroyNpc = npcs[i];
-                            npcs.Remove(destroyNpc);
+                            //npcs.Remove(destroyNpc);
+
+                            gun.Shoot(destroyNpc.transform);
 
                             destroyNpc.GetComponent<NpcController>().KillTween();
-                            destroyNpc.SetActive(false);
+                            Destroy(destroyNpc.GetComponent<NpcController>());
+
+                            //npcController.KillTween(destroyNpc);
+
+                            //destroyNpc.SetActive(false);
 
 
                         }
@@ -117,7 +131,10 @@ public class GameManager : MonoBehaviour
             }
             checkRedLight = false;
 
+
+           
         }
+        
       
     }
 
@@ -125,9 +142,16 @@ public class GameManager : MonoBehaviour
 
 
 
-    void RestartLevel()
+    public void RestartLevel()
     {
         SceneManager.LoadScene("GameScene");
+
+        player.RestartPlayer();
+        //foreach (var item in npcs)
+        //{
+        //    if (item != null)
+        //        item.GetComponent<NpcController>().RestartNpc();
+        //}
     }
 
 
