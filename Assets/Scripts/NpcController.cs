@@ -8,7 +8,7 @@ public class NpcController : MonoBehaviour
 {
     public CharStats charStat;
 
-
+    public float npcPositionXLimit;
 
     void Start()
     {
@@ -19,15 +19,21 @@ public class NpcController : MonoBehaviour
     private void StartRun()
     {
         charStat.RandomizeStats();
-        transform.DOMoveX(-10f, charStat.duration);
+ 
+
         StartCoroutine(StopRun());
     }
 
     IEnumerator StopRun()
     {
         yield return new WaitForSeconds(charStat.runWait);
-        transform.DOPause();
+        transform.DOMoveX(npcPositionXLimit, charStat.duration);
+        gameObject.GetComponent<Animator>().SetTrigger("Run");
         yield return new WaitForSeconds(charStat.runWait);
+        gameObject.GetComponent<Animator>().SetTrigger("Idle");
+        transform.DOPause();
+        
+      
         StartRun();
     }
 
