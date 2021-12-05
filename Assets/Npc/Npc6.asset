@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: Npc6
   m_EditorClassIdentifier: 
   charName: 6
-  duration: 12
-  durationMin: 12
-  durationMax: 13
-  runWait: 2.2689764
-  startRunWait: 1
-  endRunWait: 3
+  duration: 25
+  runWait: 3.262964
+  startRunWait: 3
+  endRunWait: 3.8

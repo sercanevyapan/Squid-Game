@@ -7,8 +7,6 @@ public class Gun : MonoBehaviour
 
     public GameObject bullet;
 
-    //public Transform firePos;
-
     public float bulletSpeed;
 
 
@@ -20,7 +18,5 @@ public class Gun : MonoBehaviour
 
         Destroy(b, 3);
     }
-
-
-    
+   
 }

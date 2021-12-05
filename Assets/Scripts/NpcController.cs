@@ -12,9 +12,14 @@ public class NpcController : MonoBehaviour
  
     void Start()
     {
-       
+        
         StartRun();
         
+    }
+
+    private void Update()
+    {
+        charStat.RandomizeStats();
     }
 
     private void StartRun()

@@ -32,8 +32,7 @@ public class GameManager : MonoBehaviour
     {
      
        StartCoroutine( CheckMovePlayer());
-        //StartCoroutine(CheckMoveChar());
-     
+      
     }
 
     IEnumerator CheckMovePlayer()
@@ -51,19 +50,13 @@ public class GameManager : MonoBehaviour
             if ((startPos.x - finalPos.x)>0.1f )
             {
                 
-
                 gun.Shoot(player.transform);
                 player.KillTween();
-
-                //player.SetActive(false);
+                      
             }
 
-            
-
-
         }
-
-       
+     
     }
 
     private void GreenRedLight()
@@ -73,6 +66,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator StartGreenRedLight()
     {
+     
         greenRedLight.GetComponent<Renderer>().material.color = Color.red;
 
         checkRedLight = true;
@@ -81,16 +75,16 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
         greenRedLight.GetComponent<Renderer>().material.color = Color.green;
         
-
         yield return new WaitForSeconds(3f);
         greenRedLight.GetComponent<Renderer>().material.color = Color.red;
         checkRedLight = true;
         StartCoroutine(CheckMoveChar());
+
         GreenRedLight();
     }
     IEnumerator CheckMoveChar()
     {
-        if (npcs.Count > 0 /*&& checkRedLight*/)
+        if (npcs.Count > 0 )
         {
             for (int i = 0; i < npcs.Count; i++)
             {
@@ -100,59 +94,30 @@ public class GameManager : MonoBehaviour
 
                     yield return new WaitForSeconds(0.5f);
 
-
-                        lastPosition = npcs[i].transform.position;
-
-                    //Debug.Log(firstPosition.x - lastPosition.x);
+                    lastPosition = npcs[i].transform.position;
+           
                     if ((firstPosition.x - lastPosition.x) > 0.15f &&npcs[i] != null)
                     {
                         if (npcs.Count > 0)
                         {
                             GameObject destroyNpc = npcs[i];
-                            //npcs.Remove(destroyNpc);
+                     
 
                             gun.Shoot(destroyNpc.transform);
 
                             destroyNpc.GetComponent<NpcController>().KillTween();
                             Destroy(destroyNpc.GetComponent<NpcController>());
-
-                            //npcController.KillTween(destroyNpc);
-
-                            //destroyNpc.SetActive(false);
-
-
+          
                         }
 
-
                     }
-                }        
-             
-
+                }                  
             }
-            checkRedLight = false;
-
-
-           
-        }
-        
-      
+            checkRedLight = false;       
+        }         
     }
-
-
-
-
-
     public void RestartLevel()
     {
-        SceneManager.LoadScene("GameScene");
-
-        player.RestartPlayer();
-        //foreach (var item in npcs)
-        //{
-        //    if (item != null)
-        //        item.GetComponent<NpcController>().RestartNpc();
-        //}
+        SceneManager.LoadScene("GameScene");       
     }
-
-
 }

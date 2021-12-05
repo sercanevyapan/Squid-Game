@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        transform.DOKill();
         StartCoroutine(StartedGame());
     }
 
@@ -57,8 +58,5 @@ public class PlayerController : MonoBehaviour
         gameObject.GetComponent<Animator>().SetTrigger("Dead");
     }
 
-    public void RestartPlayer()
-    {
-        transform.DOKill();
-    }
+   
 }

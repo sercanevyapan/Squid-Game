@@ -7,23 +7,23 @@ public class CharStats : ScriptableObject
     public string charName;
 
 	public float duration;
-	//public float durationMin;
-	//public float durationMax;
-
-	public float runWait;
-	//public float startRunWait;
-	//public float endRunWait;
-
-	public bool isDead;
+    //public float durationMin;
+    //public float durationMax;
+    [HideInInspector]
+    public float runWait;
+    public float startRunWait;
+    public float endRunWait;
 
 
-	//public void RandomizeStats()
-	//{
-	//	//duration = Random.Range(durationMin, durationMin);
-	//	//runWait = Random.Range(startRunWait, endRunWait);
-	//	isDead = false;
-	//}
 
 
-	
+    public void RandomizeStats()
+    {
+        //duration = Random.Range(durationMin, durationMin);
+        runWait = Random.Range(startRunWait, endRunWait);
+
+    }
+
+
+
 }
