@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Npc
+  - Bullet
   layers:
   - Default
   - TransparentFX

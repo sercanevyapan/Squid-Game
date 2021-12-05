@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public float redTime;
 
     public bool checkRedLight;
+    public bool playerFinish;
 
 
     void Start()
@@ -30,8 +31,8 @@ public class GameManager : MonoBehaviour
  
     private void FixedUpdate()
     {
-     
-       StartCoroutine( CheckMovePlayer());
+            if(!playerFinish)
+            StartCoroutine( CheckMovePlayer());
       
     }
 
@@ -104,9 +105,12 @@ public class GameManager : MonoBehaviour
                      
 
                             gun.Shoot(destroyNpc.transform);
-
-                            destroyNpc.GetComponent<NpcController>().KillTween();
-                            Destroy(destroyNpc.GetComponent<NpcController>());
+                            if (destroyNpc != null)
+                            {
+                                destroyNpc.GetComponent<NpcController>().KillTween();
+                                Destroy(destroyNpc.GetComponent<NpcController>());
+                            }
+                                
           
                         }
 
@@ -120,4 +124,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("GameScene");       
     }
+
+
+   
 }

@@ -14,6 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: 7
   duration: 20
-  runWait: 3.091613
-  startRunWait: 3
-  endRunWait: 3.5
+  runWait: 3.4

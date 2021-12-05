@@ -9,6 +9,8 @@ public class NpcController : MonoBehaviour
     public CharStats charStat;
 
     public float npcPositionXLimit;
+
+    public bool isfinish;
  
     void Start()
     {
@@ -17,14 +19,11 @@ public class NpcController : MonoBehaviour
         
     }
 
-    private void Update()
-    {
-        charStat.RandomizeStats();
-    }
 
     private void StartRun()
     {
-        StartCoroutine(StopRun());              
+        if(!isfinish)
+            StartCoroutine(StopRun());              
     }
 
     IEnumerator StopRun()
@@ -53,6 +52,16 @@ public class NpcController : MonoBehaviour
         
         transform.DOKill();
     }
-    
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag=="Finish")
+        {
+            isfinish = true;
+            
+        }
+      
+    }
 
 }

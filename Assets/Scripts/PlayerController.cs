@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && isPlayerRun == false)
         {
-            transform.DOMoveX(0f, 15f);
+            transform.DOMoveX(0f, 20f);
             
             gameObject.GetComponent<Animator>().SetTrigger("Run");
             isPlayerRun = true;
@@ -58,5 +58,14 @@ public class PlayerController : MonoBehaviour
         gameObject.GetComponent<Animator>().SetTrigger("Dead");
     }
 
-   
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Finish")
+        {
+            Time.timeScale = 0.0f;
+
+        }
+
+
+    }
 }
