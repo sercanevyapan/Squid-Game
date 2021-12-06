@@ -13,9 +13,5 @@ MonoBehaviour:
   m_Name: Npc8
   m_EditorClassIdentifier: 
   charName: 8
-  duration: 6
-  durationMin: 6
-  durationMax: 13
-  runWait: 4.391339
-  startRunWait: 1
-  endRunWait: 6
+  duration: 25
+  runWait: 3.3

@@ -10,6 +10,10 @@ public class PlayerController : MonoBehaviour
 
     private bool isStartGame;
 
+    public GameObject arrow;
+
+    public GameManager gameManager;
+
     private void Start()
     {
         transform.DOKill();
@@ -20,6 +24,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator StartedGame()
     {
         yield return new WaitForSeconds(3f);
+        arrow.SetActive(false);
         isStartGame = true;
     }
 
@@ -62,8 +67,8 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.tag == "Finish")
         {
-            Time.timeScale = 0.0f;
-
+           
+            gameManager.FinishGame();
         }
 
 

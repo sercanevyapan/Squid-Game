@@ -42,14 +42,19 @@ public class NpcController : MonoBehaviour
 
     public void KillTween()
     {
-        transform.DOKill();
         gameObject.GetComponent<Animator>().SetTrigger("Dead");
+        if (transform.gameObject != null)
+        {
+            transform.DOKill();
+           
+        }
+     
 
     }
 
     public void RestartNpc()
     {
-        
+
         transform.DOKill();
     }
 

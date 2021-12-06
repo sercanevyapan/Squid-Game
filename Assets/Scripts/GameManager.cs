@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject greenRedLight;
     public PlayerController player;
+    public GameObject tabToRun;
+    public GameObject youWinText;
 
     public Gun gun;
 
@@ -22,17 +25,21 @@ public class GameManager : MonoBehaviour
     public float redTime;
 
     public bool checkRedLight;
-    public bool playerFinish;
+  
 
 
     void Start()
     {
-        GreenRedLight();    
+        youWinText.SetActive(false);
+        GreenRedLight();
+       StartCoroutine(CloseTapToRun());
     }
+
  
+
     private void FixedUpdate()
     {
-            if(!playerFinish)
+       
             StartCoroutine( CheckMovePlayer());
       
     }
@@ -123,9 +130,22 @@ public class GameManager : MonoBehaviour
     }
     public void RestartLevel()
     {
-        SceneManager.LoadScene("GameScene");       
+        SceneManager.LoadScene("GameScene");
+
+        DOTween.KillAll();
+
+    }
+
+    IEnumerator CloseTapToRun()
+    {
+        yield return new WaitForSeconds(3f);
+        tabToRun.SetActive(false);
     }
 
 
-   
+    public void FinishGame()
+    {
+        Time.timeScale = 0.0f;
+        youWinText.SetActive(true);
+    }
 }
