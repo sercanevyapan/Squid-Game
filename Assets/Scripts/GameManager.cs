@@ -25,11 +25,13 @@ public class GameManager : MonoBehaviour
     public float redTime;
 
     public bool checkRedLight;
-  
 
+    private AudioSource audioSource;
+    public AudioClip music;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         youWinText.SetActive(false);
         GreenRedLight();
        StartCoroutine(CloseTapToRun());
@@ -58,9 +60,12 @@ public class GameManager : MonoBehaviour
 
             if ((startPos.x - finalPos.x)>0.1f )
             {
-                
-                gun.Shoot(player.transform);
-                player.KillTween();
+                if (!player.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Dead"))
+                {
+                    gun.Shoot(player.transform);
+                    player.KillTween();
+                }
+             
                       
             }
 
@@ -83,7 +88,7 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
         greenRedLight.GetComponent<Image>().color = Color.green;
-        
+        PlaySoundFX(music, 1f);
         yield return new WaitForSeconds(3f);
         greenRedLight.GetComponent<Image>().color = Color.red;
         checkRedLight = true;
@@ -147,5 +152,11 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0.0f;
         youWinText.SetActive(true);
+    }
+
+    public void PlaySoundFX(AudioClip clip, float volume)
+    {
+        audioSource.PlayOneShot(clip, volume);
+
     }
 }

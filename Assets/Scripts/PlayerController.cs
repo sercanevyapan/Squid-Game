@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
         isStartGame = false;
         transform.DOKill();
         gameObject.GetComponent<Animator>().SetTrigger("Dead");
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

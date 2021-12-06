@@ -9,6 +9,10 @@ public class Gun : MonoBehaviour
 
     public float bulletSpeed;
 
+    public GameManager gameManager;
+
+    public AudioClip gunmusic;
+
 
     public void Shoot(Transform firePos)
     {
@@ -17,6 +21,8 @@ public class Gun : MonoBehaviour
         b.GetComponent<Rigidbody2D>().AddForce(firePos.position * bulletSpeed, ForceMode2D.Impulse);
 
         Destroy(b, 3);
+
+        gameManager.PlaySoundFX(gunmusic,1f);
     }
    
 }
