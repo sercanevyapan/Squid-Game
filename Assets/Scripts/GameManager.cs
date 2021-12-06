@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -68,16 +69,16 @@ public class GameManager : MonoBehaviour
     IEnumerator StartGreenRedLight()
     {
      
-        greenRedLight.GetComponent<Renderer>().material.color = Color.red;
+        greenRedLight.GetComponent<Image>().color = Color.red;
 
         checkRedLight = true;
         StartCoroutine(CheckMoveChar());
 
         yield return new WaitForSeconds(3f);
-        greenRedLight.GetComponent<Renderer>().material.color = Color.green;
+        greenRedLight.GetComponent<Image>().color = Color.green;
         
         yield return new WaitForSeconds(3f);
-        greenRedLight.GetComponent<Renderer>().material.color = Color.red;
+        greenRedLight.GetComponent<Image>().color = Color.red;
         checkRedLight = true;
         StartCoroutine(CheckMoveChar());
 
