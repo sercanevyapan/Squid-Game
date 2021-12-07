@@ -136,7 +136,7 @@ public class GameManager : MonoBehaviour
     public void RestartLevel()
     {
         SceneManager.LoadScene("GameScene");
-
+        Time.timeScale = 1.0f;
         DOTween.KillAll();
 
     }
